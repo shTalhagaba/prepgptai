@@ -1,0 +1,387 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Daredevil Color Palette */
+  --color-success-100: #DC143C;
+  --color-success-200: #8B0000;
+  --color-destructive-100: #FF2400;
+  --color-destructive-200: #B22222;
+
+  /* Primary Reds - Daredevil's Suit */
+  --color-primary-100: #FFB3BA;
+  --color-primary-200: #DC143C;
+  --color-primary-300: #8B0000;
+
+  /* Accent Gold - Daredevil's Original Costume */
+  --color-accent-100: #FFD700;
+  --color-accent-200: #FFA500;
+
+  /* Light grays for contrast */
+  --color-light-100: #F5F5F5;
+  --color-light-400: #C0C0C0;
+  --color-light-600: #8C8C8C;
+  --color-light-800: #606060;
+
+  /* Dark theme - Deep blacks */
+  --color-dark-100: #0A0A0A;
+  --color-dark-200: #1A1A1A;
+  --color-dark-300: #2D2D2D;
+  --color-dark-400: #424242;
+
+  --font-mona-sans: "Mona Sans", sans-serif;
+
+  --bg-pattern: url("/pattern.png");
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(0.98 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.52 0.24 16); /* Crimson red */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.78 0.18 85); /* Gold */
+  --accent-foreground: oklch(0.15 0 0);
+  --destructive: oklch(0.52 0.24 16);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.9 0 0);
+  --ring: oklch(0.52 0.24 16);
+  --chart-1: oklch(0.52 0.24 16);
+  --chart-2: oklch(0.42 0.24 16);
+  --chart-3: oklch(0.78 0.18 85);
+  --chart-4: oklch(0.35 0.24 16);
+  --chart-5: oklch(0.48 0.18 85);
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.15 0 0);
+  --sidebar-primary: oklch(0.52 0.24 16);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.95 0 0);
+  --sidebar-accent-foreground: oklch(0.15 0 0);
+  --sidebar-border: oklch(0.9 0 0);
+  --sidebar-ring: oklch(0.52 0.24 16);
+}
+
+.dark {
+  --background: oklch(0.04 0 0); /* Midnight black */
+  --foreground: oklch(0.96 0 0); /* White smoke */
+  --card: oklch(0.10 0 0); /* Charcoal */
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.10 0 0);
+  --popover-foreground: oklch(0.96 0 0);
+  --primary: oklch(0.52 0.24 16); /* Crimson red */
+  --primary-foreground: oklch(0.96 0 0);
+  --secondary: oklch(0.18 0 0); /* Dark slate */
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: var(--light-400);
+  --accent: oklch(0.78 0.18 85); /* Gold */
+  --accent-foreground: oklch(0.04 0 0);
+  --destructive: oklch(0.56 0.24 16); /* Scarlet */
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.52 0.24 16);
+  --chart-1: oklch(0.52 0.24 16);
+  --chart-2: oklch(0.42 0.24 16);
+  --chart-3: oklch(0.78 0.18 85);
+  --chart-4: oklch(0.35 0.24 16);
+  --chart-5: oklch(0.48 0.18 85);
+  --sidebar: oklch(0.10 0 0);
+  --sidebar-foreground: oklch(0.96 0 0);
+  --sidebar-primary: oklch(0.52 0.24 16);
+  --sidebar-primary-foreground: oklch(0.96 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
+  --sidebar-accent-foreground: oklch(0.96 0 0);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.52 0.24 16);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  p {
+    @apply text-light-100;
+  }
+  h2 {
+    @apply text-3xl font-semibold text-light-100;
+  }
+  h3 {
+    @apply text-2xl font-semibold text-light-100;
+  }
+  ul {
+    @apply list-disc list-inside;
+  }
+  li {
+    @apply text-light-100;
+  }
+}
+
+@layer components {
+  .btn-call {
+    @apply inline-block px-7 py-3 font-bold text-sm leading-5 text-white transition-all duration-300 bg-success-100 border-2 border-success-200 rounded-full shadow-lg shadow-success-200/50 focus:outline-none focus:shadow-2xl active:bg-success-200 hover:bg-success-200 hover:shadow-success-100/70 min-w-28 cursor-pointer items-center justify-center overflow-visible;
+
+    .span {
+      @apply bg-success-100 h-[85%] w-[65%];
+    }
+  }
+
+  .btn-disconnect {
+    @apply inline-block px-7 py-3 text-sm font-bold leading-5 text-white transition-all duration-300 bg-destructive-100 border-2 border-destructive-200 rounded-full shadow-lg shadow-destructive-100/50 focus:outline-none focus:shadow-2xl active:bg-destructive-200 hover:bg-destructive-200 hover:shadow-destructive-100/70 min-w-28;
+  }
+
+  .btn-upload {
+    @apply flex min-h-14 w-full items-center justify-center gap-1.5 rounded-md;
+  }
+  
+  .btn-primary {
+    @apply w-fit !bg-primary-200 !text-white hover:!bg-primary-300 hover:shadow-lg hover:shadow-primary-200/50 !rounded-full !font-bold px-5 cursor-pointer min-h-10 transition-all duration-300 border-2 border-primary-300;
+  }
+  
+  .btn-secondary {
+    @apply w-fit !bg-dark-300 !text-primary-200 hover:!bg-dark-400 hover:shadow-lg hover:shadow-primary-200/30 !rounded-full !font-bold px-5 cursor-pointer min-h-10 transition-all duration-300 border-2 border-primary-200;
+  }
+
+  .btn-upload {
+    @apply bg-dark-200 rounded-full min-h-12 px-5 cursor-pointer border-2 border-primary-200/30 hover:border-primary-200 overflow-hidden  transition-all duration-300;
+  }
+
+  .card-border {
+    @apply border-gradient p-0.5 rounded-2xl w-fit;
+  }
+
+  .card {
+    @apply dark-gradient rounded-2xl min-h-full;
+  }
+
+  .form {
+    @apply w-full;
+
+    .label {
+      @apply !text-light-100 !font-semibold;
+    }
+
+    .input {
+      @apply !bg-dark-200 !rounded-full !min-h-12 !px-5 placeholder:!text-light-400 border-2 border-primary-200/30 focus:border-primary-200 transition-all duration-300;
+    }
+
+    .btn {
+      @apply !w-full !bg-primary-200 !text-white hover:!bg-primary-300 hover:shadow-lg hover:shadow-primary-200/50 !rounded-full !min-h-10 !font-bold !px-5 cursor-pointer transition-all duration-300;
+    }
+  }
+
+  .call-view {
+    @apply flex sm:flex-row flex-col gap-10 items-center justify-between w-full;
+
+    h3 {
+      @apply text-center text-primary-200 mt-5 font-bold;
+    }
+
+    .card-interviewer {
+      @apply flex-center flex-col gap-2 p-7 h-[400px] daredevil-gradient rounded-lg border-2 border-primary-200 shadow-lg shadow-primary-200/30 flex-1 sm:basis-1/2 w-full;
+    }
+
+    .avatar {
+      @apply z-10 flex items-center justify-center red-gradient rounded-full size-[120px] relative border-4 border-primary-300 shadow-xl shadow-primary-200/50;
+
+      .animate-speak {
+        @apply absolute inline-flex size-5/6 animate-ping rounded-full bg-primary-200 opacity-75;
+      }
+    }
+
+    .card-border {
+      @apply border-gradient p-0.5 rounded-2xl flex-1 sm:basis-1/2 w-full h-[400px] max-md:hidden;
+    }
+
+    .card-content {
+      @apply flex flex-col gap-2 justify-center items-center p-7 dark-gradient rounded-2xl min-h-full;
+    }
+  }
+
+  .transcript-border {
+    @apply border-gradient p-0.5 rounded-2xl w-full;
+
+    .transcript {
+      @apply dark-gradient rounded-2xl min-h-12 px-5 py-3 flex items-center justify-center border border-primary-200/20;
+
+      p {
+        @apply text-lg text-center text-light-100;
+      }
+    }
+  }
+
+  .section-feedback {
+    @apply flex flex-col gap-8 max-w-5xl mx-auto max-sm:px-4 text-lg leading-7;
+
+    .buttons {
+      @apply flex w-full justify-evenly gap-4 max-sm:flex-col max-sm:items-center;
+    }
+  }
+
+  .auth-layout {
+    @apply flex items-center justify-center mx-auto max-w-7xl min-h-screen max-sm:px-4 max-sm:py-8;
+  }
+
+  .root-layout {
+    @apply flex mx-auto max-w-7xl flex-col gap-12 my-12 px-16 max-sm:px-4 max-sm:my-8;
+  }
+
+  .card-cta {
+    @apply flex flex-row daredevil-gradient rounded-3xl px-16 py-6 items-center justify-between max-sm:px-4 border-2 border-primary-200 shadow-2xl shadow-primary-200/20;
+  }
+
+  .interviews-section {
+    @apply flex flex-wrap gap-4 max-lg:flex-col w-full items-stretch;
+  }
+
+  .interview-text {
+    @apply text-lg text-center text-light-100;
+  }
+
+  .progress {
+    @apply h-1.5 text-[5px] font-bold bg-primary-200 rounded-full flex-center shadow-md shadow-primary-200/50;
+  }
+
+  .tech-tooltip {
+    @apply absolute bottom-full mb-1 hidden group-hover:flex px-2 py-1 text-xs text-white bg-dark-400 border border-primary-200/50 rounded-md shadow-lg shadow-primary-200/30;
+  }
+
+  .card-interview {
+    @apply dark-gradient rounded-2xl min-h-full flex flex-col p-6 relative overflow-hidden gap-10 justify-between border-2 border-primary-200/30 hover:border-primary-200 hover:shadow-xl hover:shadow-primary-200/20 transition-all duration-300;
+
+    .badge-text {
+      @apply text-sm font-semibold capitalize;
+    }
+  }
+}
+
+/* Daredevil Theme Gradients */
+@utility dark-gradient {
+  @apply bg-gradient-to-br from-dark-100 to-dark-200;
+}
+
+@utility border-gradient {
+  @apply bg-gradient-to-br from-primary-200 via-primary-300 to-destructive-200;
+}
+
+@utility pattern {
+  @apply bg-[url('/pattern.png')] bg-top bg-no-repeat;
+}
+
+@utility red-gradient {
+  @apply bg-gradient-to-br from-primary-200 to-primary-300;
+}
+
+@utility daredevil-gradient {
+  @apply bg-gradient-to-br from-dark-100 via-dark-200 to-dark-300;
+}
+
+/* Legacy gradient support */
+@utility blue-gradient-dark {
+  @apply bg-gradient-to-br from-dark-100 via-dark-200 to-dark-300;
+}
+
+@utility blue-gradient {
+  @apply bg-gradient-to-br from-primary-200 to-primary-300;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Daredevil Pulse Animation (Radar Effect) */
+@keyframes radarPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 30px rgba(220, 20, 60, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 20, 60, 0);
+  }
+}
+
+@utility devil-pulse {
+  animation: radarPulse 2s infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@utility animate-float {
+  animation: float 3s ease-in-out infinite;
+}
